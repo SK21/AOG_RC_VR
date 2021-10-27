@@ -465,14 +465,15 @@ namespace RateController
             double Result = cRateSet;
             if (VRconversion[cVariableRate] < 5)
             {
-                byte Percent = mf.VRdata.Rate(VRconversion[cVariableRate]);
-                if (Percent != 255)
+                double Percent = mf.VRdata.Rate(VRconversion[cVariableRate]);
+                if ((int)Percent != 255)
                 {
                     Result = (double)Percent / 100.0 * cRateSet;
                 }
             }
             return Result;
         }
+
         public double TargetUPM() // returns units per minute set rate
         {
             double V = 0;

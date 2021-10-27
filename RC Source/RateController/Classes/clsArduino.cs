@@ -29,7 +29,7 @@ namespace RateController
         private float LastPWM;
         private DateTime LastTime;
         private int LOOP_TIME = 50;
-        private float MaxSimRate = 50F;        // max rate of system in UPM
+        private float MaxSimRate = 100F;        // max rate of system in UPM
 
         private float MaxRPM = 100.0F;
         private int mcID;

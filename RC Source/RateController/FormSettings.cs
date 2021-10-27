@@ -500,7 +500,7 @@ namespace RateController
         {
             double tempD;
             double.TryParse(RateSet.Text, out tempD);
-            using (var form = new FormNumeric(0, 500, tempD))
+            using (var form = new FormNumeric(0, 50000, tempD))
             {
                 var result = form.ShowDialog();
                 if (result == DialogResult.OK)
@@ -519,7 +519,7 @@ namespace RateController
         {
             double tempD;
             double.TryParse(RateSet.Text, out tempD);
-            if (tempD < 0 || tempD > 10000)
+            if (tempD < 0 || tempD > 50000)
             {
                 System.Media.SystemSounds.Exclamation.Play();
                 e.Cancel = true;
