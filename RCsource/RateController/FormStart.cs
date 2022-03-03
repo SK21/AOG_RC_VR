@@ -12,6 +12,7 @@ namespace RateController
         RealNano
     }
 
+
     public partial class FormStart : Form
     {
         public PGN254 AutoSteerPGN = new PGN254();
