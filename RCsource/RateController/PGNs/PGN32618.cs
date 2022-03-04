@@ -53,7 +53,7 @@ namespace RateController
         public void ParseByteData(byte[] Data)
         {
             bool Result = false;
-            if (Data[0] == HeaderHi & Data[1] == HeaderLo & Data.Length >= cByteCount)
+            if (Data[0] == HeaderHi && Data[1] == HeaderLo && Data.Length >= cByteCount)
             {
                 SW[0] = mf.Tls.BitRead(Data[3], 0);     // auto on
                 SW[1] = mf.Tls.BitRead(Data[3], 1);     // master on

@@ -37,7 +37,7 @@ namespace RateController
         public bool ParseByteData(byte[] Data)
         {
             bool Result = false;
-            if (Data[0] == HeaderHi & Data[1] == HeaderLo & Data.Length >= cByteCount)
+            if (Data[0] == HeaderHi && Data[1] == HeaderLo && Data.Length >= cByteCount)
             {
                 ModuleID = Data[3];
                 for (int i = 0; i < 4; i++)
@@ -78,7 +78,7 @@ namespace RateController
 
         public Int16 Pressure(byte ModuleID, byte SensorID)
         {
-            if (SensorID < 4 & ModuleID < 255)
+            if (SensorID < 4 && ModuleID < 255)
             {
                 return cPressure[ModuleID, SensorID];
             }

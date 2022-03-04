@@ -38,7 +38,7 @@ namespace RateController
         public bool ParseByteData(byte[] Data)
         {
             bool Result = false;
-            if (Data[0] == HeaderHi & Data[1] == HeaderLo & Data.Length >= cByteCount)
+            if (Data[0] == HeaderHi && Data[1] == HeaderLo && Data.Length >= cByteCount)
             {
                 int tmp = Prod.mf.Tls.ParseModID(Data[2]);
                 if (Prod.ModuleID == tmp)

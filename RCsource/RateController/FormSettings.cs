@@ -142,16 +142,6 @@ namespace RateController
 
                     string Title = "RC [" + Path.GetFileNameWithoutExtension(Properties.Settings.Default.FileName) + "]";
 
-                    switch (SelectedSimulation)
-                    {
-                        case SimType.VirtualNano:
-                            break;
-
-                        case SimType.RealNano:
-                        default:
-                            break;
-                    }
-
                     SetButtons(false);
                     UpdateForm();
                 }

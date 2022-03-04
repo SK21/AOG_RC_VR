@@ -84,7 +84,7 @@ namespace RateController
             get { return cMinUPM; }
             set
             {
-                if (value >= 0 & value < 1000)
+                if (value >= 0 && value < 1000)
                 {
                     cMinUPM = value;
                 }
@@ -198,8 +198,8 @@ namespace RateController
 
         public double AverageRate()
         {
-            if (ArduinoModule.Connected() & mf.AutoSteerPGN.Connected()
-                & cHectaresPerMinute > 0 & Coverage > 0)
+            if (ArduinoModule.Connected() && mf.AutoSteerPGN.Connected()
+                && cHectaresPerMinute > 0 && Coverage > 0)
             {
                 return (cQuantityApplied / Coverage);
             }
@@ -226,7 +226,7 @@ namespace RateController
 
         public double CurrentRate()
         {
-            if (ArduinoModule.Connected() & mf.AutoSteerPGN.Connected() & cHectaresPerMinute > 0)
+            if (ArduinoModule.Connected() && mf.AutoSteerPGN.Connected() && cHectaresPerMinute > 0)
             {
                 return RateApplied();
             }
@@ -393,7 +393,7 @@ namespace RateController
             bool Result = false;    // return true if there is good comm
             try
             {
-                if (RealNano & SimulationType == SimType.VirtualNano)
+                if (RealNano && SimulationType == SimType.VirtualNano)
                 {
                     // block PGN32613 from real nano when simulation is with virtual nano
                 }
@@ -423,13 +423,13 @@ namespace RateController
 
         public double SmoothRate()
         {
-            if (ArduinoModule.Connected() & mf.AutoSteerPGN.Connected() & cHectaresPerMinute > 0)
+            if (ArduinoModule.Connected() && mf.AutoSteerPGN.Connected() && cHectaresPerMinute > 0)
             {
                 if (TargetRate() > 0)
                 {
                     double Rt = RateApplied() / TargetRate();
 
-                    if (Rt >= .9 & Rt <= 1.1 & mf.Sections.SwitchOn(Switches.Auto))
+                    if (Rt >= .9 && Rt <= 1.1 && mf.Sections.SwitchOn(Switches.Auto))
                     {
                         return TargetRate();
                     }
@@ -528,7 +528,7 @@ namespace RateController
 
         public void Update()
         {
-            if (ArduinoModule.Connected() & mf.AutoSteerPGN.Connected())
+            if (ArduinoModule.Connected() && mf.AutoSteerPGN.Connected())
             {
                 if (!SwitchIDsSent)
                 {
@@ -541,7 +541,7 @@ namespace RateController
                 CurrentMinutes = (UpdateStartTime - LastUpdateTime).TotalMinutes;
                 LastUpdateTime = UpdateStartTime;
 
-                if (CurrentMinutes < 0 | CurrentMinutes > 1 | PauseWork)
+                if (CurrentMinutes < 0 || CurrentMinutes > 1 || PauseWork)
                 {
                     CurrentMinutes = 0;
                     PauseWork = false;

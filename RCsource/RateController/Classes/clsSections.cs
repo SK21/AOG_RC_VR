@@ -104,7 +104,7 @@ namespace RateController
             }
             set
             {
-                if (value < 0 | value > 16)
+                if (value < 0 || value > 16)
                 {
                     throw new IndexOutOfRangeException();
                 }
@@ -269,7 +269,7 @@ namespace RateController
 
             bool RelaysChanged = UpdateSectionsOn();
 
-            if (!SourceAOG & (RelaysChanged | SectionSwitchesChanged))
+            if (!SourceAOG && (RelaysChanged || SectionSwitchesChanged))
             {
                 // send to AOG
                 ToAOG.OnHi = SectionOnToAOG[1];
@@ -300,7 +300,7 @@ namespace RateController
             if (SwON[(int)Switches.MasterOff]) MasterOn = false;
             if (SwON[(int)Switches.MasterOn]) MasterOn = true;
 
-            if ((MasterOn != MasterLast) & !MasterChanged)
+            if ((MasterOn != MasterLast) && !MasterChanged)
             {
                 // create AOG master notification
                 MasterTime = SWreadTime;
@@ -340,7 +340,7 @@ namespace RateController
             }
 
             // auto state
-            if ((SwON[(int)Switches.Auto] != AutoLast) & !AutoChanged)
+            if ((SwON[(int)Switches.Auto] != AutoLast) && !AutoChanged)
             {
                 // create AOG auto notification
                 AutoTime = SWreadTime;
@@ -451,7 +451,7 @@ namespace RateController
                 }
             }
 
-            bool Result = MasterChanged | (OutCommand != OutLast);
+            bool Result = MasterChanged || (OutCommand != OutLast);
 
             OutLast = OutCommand;
 
@@ -591,7 +591,7 @@ namespace RateController
                 if (SwON[(int)Switches.Auto])
                 {
                     double CurrentRate = Prd.RateSet;
-                    if (RateUp & CurrentRate == 0) CurrentRate = 1; // provide a starting point
+                    if (RateUp && CurrentRate == 0) CurrentRate = 1; // provide a starting point
                     CurrentRate = Math.Round(CurrentRate * ChangeAmount, 1);
                     Prd.RateSet = CurrentRate;
                 }
